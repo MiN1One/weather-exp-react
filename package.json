@@ -26,7 +26,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "prefix-css" : "postcss --use autoprefixer -b \"last 5 versions\" build/static/css/main.40d29696.chunk.css -o build/static/css/main.40d29696.chunk.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
@@ -38,7 +37,9 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "last 10 versions",
+      "IE 9"
     ],
     "development": [
       "last 1 chrome version",
