@@ -1,6 +1,6 @@
 {
+  "homepage": "https://min1one.github.io/weather-exp-react/.",
   "name": "weather-experimental-react",
-  "homepage": "https://min1one.github.io/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
