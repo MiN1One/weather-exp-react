@@ -4,10 +4,10 @@ In the project directory, you can run:
 
 ### `Features:`
 
-Language support - English, Deutch, Russian
-Weather units - Metric, Imperial, Scientific
-15-day detailed forecast
-Recent searches list
+* Language support - English, Deutch, Russian
+* Weather units - Metric, Imperial, Scientific
+* 15-day detailed forecast
+* Recent searches list
 
 ### `NOTE!` Russian language and sunrise/set times are in the ALPHA stage.',
 Powered by WeatherBit. 
