@@ -114,14 +114,12 @@ const Data = (props) => {
     }
 
     return (
-        <React.Fragment>
-            <Switch>
-                <Route path="/performsearch" render={() => data} />
-                <Route path="/" exact render={() => <IntroMessage lang={props.lang} />} />
-                <Route path="*" render={() => <ErrorReporter notFound={true} lang={props.lang} />} />
-                {/* <Redirect to="/" /> */}
-            </Switch>
-        </React.Fragment>
+        <Switch>
+            <Route path="/performsearch" render={() => data} />
+            <Route path="/" exact render={() => <IntroMessage lang={props.lang} />} />
+            <Route path="*" render={() => <ErrorReporter notFound={true} lang={props.lang} />} />
+            {/* <Redirect to="/" /> */}
+        </Switch>
     )
 };
 
