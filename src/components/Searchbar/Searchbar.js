@@ -11,6 +11,10 @@ import de from '../../main/main_de';
 
 const Searchbar = (props) => {
 
+    useEffect(() => {
+        props.readStorage();
+    });
+
     const langSet = props.lang === 'de' ? de : en;
 
     let searchInput = useRef();
@@ -123,6 +127,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onInputChange: (input) => dispatch(actions.inputRecieved(input)),
         onSubmitSearch: (lang, units, search) => dispatch(actions.performSearch(lang, units, search)),
+        readStorage: () => dispatch(actions.readStore())
     }
 };
 
