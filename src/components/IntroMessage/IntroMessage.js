@@ -25,7 +25,7 @@ const IntroMessage = (props) => {
                 <div className="IntroMessage__main">
                     <p>WeatherApp</p>
                     <span className="IntroMessage__about" dangerouslySetInnerHTML={{__html: langSet.intro_about.main}} />
-                    <a href="https://github.com/MiN1One/weather-experimental" className="IntroMessage__about">{langSet.intro_about.srcCode}</a>
+                    <a href="https://github.com/MiN1One/weather-exp-react" className="IntroMessage__about">{langSet.intro_about.srcCode}</a>
                 </div>
                 <div className="IntroMessage__hint">
                     <svg dangerouslySetInnerHTML={{__html: useTag('basic_pin2')}}/>
