@@ -1,0 +1,80 @@
+@mixin respond($breakpoint) {
+    @if $breakpoint == 260 {
+        @media only screen and (max-width: 16.25em) { @content };
+    }
+
+    @if $breakpoint == 280 {
+        @media only screen and (max-width: 17.5em) { @content };
+    }
+
+    @if $breakpoint == 365 {
+        @media only screen and (max-width: 22.8125em) { @content };
+    }
+
+    @if $breakpoint == 379 {
+        @media only screen and (max-width: 23.6875em) { @content };
+    }
+
+    @if $breakpoint == 400 {
+        @media only screen and (max-width: 26.25em) { @content };
+    }
+
+    @if $breakpoint == 500 {
+        @media only screen and (max-width: 31.25em) { @content };
+    } // 500
+    
+    @if $breakpoint == 550 {
+        @media only screen and (max-width: 34.375em) { @content };
+    } // 500
+
+    @if $breakpoint == 618 {
+        @media only screen and (max-width: 38.625em) { @content };
+    } // 615
+
+    @if $breakpoint == 815 {
+        @media only screen and (max-width: 50.9375em) { @content };
+    } // 815
+
+    @if $breakpoint == 855 {
+        @media only screen and (max-width: 53.4375em) { @content };
+    } // 735
+
+    @if $breakpoint == 950 {
+        @media only screen and (max-width: 59.375em) { @content };
+    } // 950
+
+    @if $breakpoint == 1600 {
+        @media only screen and (min-width: 100em) { @content };
+    }
+}
+
+@mixin btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin borderA {
+    border: .1rem solid rgba($color-grey-dark, .4);
+}
+
+@mixin borderR {
+    border-right: .1rem solid rgba($color-grey-dark, .4);
+}
+
+@mixin borderL {
+    border-left: .1rem solid rgba($color-grey-dark, .4);
+}
+
+@mixin borderB {
+    border-bottom: .1rem solid rgba($color-grey-dark, .4);
+}
+
+@mixin shadowS {
+    box-shadow: .15rem .15rem 1rem rgba($color-grey-light, .15), -.2rem -.2rem 1rem rgba($color-grey-light, .15);
+}

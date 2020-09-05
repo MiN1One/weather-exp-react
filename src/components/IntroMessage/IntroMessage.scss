@@ -1,0 +1,120 @@
+@import '../../abstracts/index';
+
+.IntroMessage {
+    height: 35rem;
+    font-size: 2rem;
+    font-family: 'Raleway', sans-serif;
+    opacity: .8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @include respond(500) {
+        text-align: center;
+    }
+
+    @include respond(950) {
+        height: calc(100vh - 7.5rem - 6rem);
+        display: block;
+        align-items: initial;
+        justify-content: initial;
+    }
+    
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+        @include respond(950) {
+            padding-top: 8rem;
+        }
+    }
+    
+    &__main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        margin-bottom: 4rem;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            height: .25rem;
+            width: 10rem;
+            background-color: rgba(#c7c7c7, .5);
+        }
+    }
+    
+    &__about {
+        font-size: 1.5rem;
+        transition: all .3s ease;
+        
+        &:not(:last-child) {
+            margin-bottom: .7rem;
+        }
+
+        a {
+            
+            &:hover {
+                transform: translateY(-.3rem);
+            }
+        }
+    }
+    
+    &__hint {
+        font-size: 1.7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    &__features {
+        font-size: 1.55rem;
+        margin-bottom: 1rem;
+
+        @include respond(500) {
+            list-style: none;
+        }
+    }
+
+    
+    p {
+        margin-bottom: 1rem;
+        font-size: 2.2rem;
+    }
+
+    &__notes {
+        font-size: 1.5rem !important;
+    }
+
+    li {
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: currentColor;
+        border-bottom: 1px solid rgba($color-text, .3);
+    }
+
+    svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin-right: .3rem;
+
+        @include respond(500) {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,89 @@
+@import '../../abstracts/index';
+
+.MobileToolbar {
+
+    &__toggler {
+        @include btn;
+        @include borderA;
+        border-radius: .5rem;
+        padding: .2rem .4rem;
+
+        &:hover,
+        &:focus {
+            @include shadowS;
+        }
+    }
+    
+    &__bar {
+        @include shadowS;
+        @include borderR;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 60;
+        background-color: #f9f9f9;
+        height: 100vh;
+        width: max-content;
+        transform: translateX(-100%);
+        transition: all .3s ease;
+        padding: 1.2rem;
+    }
+
+    &__box {
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        margin-bottom: .5rem;
+        color: #747474;
+    }
+
+    &__icon,
+    &__toggler-icon {
+        font-size: 2rem;
+        display: flex;
+        margin-right: .5rem;
+    }
+
+    &__toggler-icon {
+        margin: 0;
+        font-size: 2.65rem;
+    }
+
+    &__btns {
+        @include btn;
+        @include borderB;
+        display: block;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.9rem;
+        
+        &:hover,
+        &:focus {
+            transform: translateY(-.3rem)
+        }
+    }
+    
+    &__tools {
+        @include btn;
+        display: flex;
+        align-items: center;
+        
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+    
+    &__tools-title {
+        @include borderB;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.9rem;
+    }
+}
+
+.open {
+    transform: translateX(0);
+}

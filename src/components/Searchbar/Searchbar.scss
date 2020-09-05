@@ -1,0 +1,165 @@
+@import '../../abstracts/index';
+
+.Searchbar {
+    display: flex;
+    align-items: stretch;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    transition: all .3s ease;
+    border-radius: 10rem;
+    
+    &__field {
+        @include borderA;
+        width: 18rem;
+        padding: .85rem 1.5rem;
+        border-radius: 10rem 0 0 10rem;
+        transition: width .3s ease-in-out;
+        background-color: #fff;
+        z-index: 50;
+    
+        @include respond(280) {
+            width: 13rem;
+        }
+        
+        &:focus {
+            @include shadowS;
+            outline: none;
+            width: 24rem;
+
+            @include respond(280) {
+                width: 17rem;
+            }
+        }
+        
+        &::-webkit-input-placeholder {
+            font-family: 'Dosis', sans-serif;
+            font-size: 1.5rem;
+        }
+    }
+    
+    &__field:focus + .Searchbar__btn {
+        @include shadowS;
+    }
+    
+    &__btn {
+        @include btn;
+        @include borderA;
+        padding: .35rem 1rem;
+        display: flex;
+        border-radius: 0 25rem 25rem 0;
+        background-color: #eee;
+        border-left: none;
+        transition: all .3s;
+        border-left: none;
+        z-index: 50;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: #f3f3f3;
+        }
+    
+        &:hover .Searchbar__icons,
+        &:hover .Searchbar__ico-fonts,
+        &:focus .Searchbar__ico-fonts,
+        &:focus .Searchbar__icons {
+            transform: scale(1.07);
+        }
+    }
+
+    &__recent-list {
+        @include shadowS;
+        @include borderA;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        list-style: none;
+        background-color: #f9f9f9;
+        border-radius: 0 0 2rem 2rem;
+        padding-top: 2rem;
+        transform: translateY(-2rem);
+        z-index: 40;
+        overflow: hidden;
+        
+        display: none;
+    }
+
+    // .Searchbar__field:focus ~ .Searchbar__recent-list {
+    //     transform: translateY(-2rem) scale(1);
+    //     opacity: 1;
+    // }
+
+    &__ico-fonts {
+        font-size: 2.3rem;
+        display: flex;
+        transition: all .3s ease;
+        color: #494949;
+    }
+    
+    &__recent-item {
+        cursor: pointer;
+        font-weight: 500;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-size: 1.35rem;
+        color: #707070;
+        font-family: 'Raleway';
+        // color: ;
+        text-align: center;
+        position: relative;
+        padding: .65rem;
+    
+        &::before {
+            content: "";
+            width: .3rem;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: $color-primary-blue;
+            transform: scale(0);
+            transition: transform .3s ease;
+            transform-origin: center;
+        }
+    
+        &:hover::before {
+            transform: scale(1);
+        }
+    
+        @include respond(500) {
+            font-size: 1.5rem;
+        }
+    }
+    
+    &__recent-items {
+        width: 100%;
+        position: relative;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: .5rem;
+        color: #999;
+    
+        &::before {
+            content: "";
+            display: inline-block;
+            background-color: rgba($color-grey-dark, .4);
+            height: .1rem;
+            width: 70%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .showRecent {
+        transform: translateY(-2rem) scale(1);
+        opacity: 1;
+    }
+}
+

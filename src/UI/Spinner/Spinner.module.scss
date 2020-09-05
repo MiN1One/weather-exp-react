@@ -1,0 +1,33 @@
+@import '../../abstracts/index';
+
+.Spinner {
+    height: 35rem;
+    font-size: 1.7rem;
+    opacity: .8;
+    letter-spacing: .5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    div {
+        transform: translateY(-6rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    @include respond(950) {
+        height: calc(100vh - 7.5rem - 6rem);
+    }
+    
+    svg {
+        width: 8rem;
+        height: 8rem;
+        opacity: .75;
+        transform: rotate(45deg);
+        transition: transform 3s;
+        animation: spin 1.25s infinite linear;
+        margin-bottom: 1.5rem;
+    }
+}

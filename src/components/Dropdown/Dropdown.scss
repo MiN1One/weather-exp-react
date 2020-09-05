@@ -1,0 +1,278 @@
+@import '../../abstracts/index.scss';
+
+.Dropdown {
+    @include borderA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+    user-select: none;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    position: relative;
+    font-size: 1.4rem;
+    transition: all .3s ease;
+    height: 100%;
+    
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        @include shadowS;
+    }
+    
+    &__toggler {
+        padding: .7rem .5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__list {
+        @include shadowS;
+        list-style: none;
+        position: absolute;
+        top: 110%;
+        left: 0;
+        border: .1rem solid rgba($color-grey-dark, .4);
+        border-radius: 5px;
+        overflow: hidden;
+        z-index: 9999;
+        width: max-content;
+        
+        display: none;
+    }
+
+    &__title {
+        user-select: none;
+        padding: .7rem 1rem;
+        color: #999;
+        background-color: #f5f5f5;
+        font-size: 1.4rem;
+        position: relative;
+        width: 100%;
+        border-bottom: .1rem solid rgba($color-grey-dark, .4);
+        cursor: initial !important;
+    }
+    
+    &__item {
+        padding: .7rem 1rem;
+        cursor: pointer;
+        color: initial;
+        background-color: #f9f9f9;
+        font-size: 1.4rem;
+        position: relative;
+        width: 100%;
+    
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: .3rem;
+            background-color: $color-primary-blue;
+            transform: scale(0);
+            transition: all .3s ease;
+        }
+    
+        &:hover::before {
+            outline: none;
+            transform: scale(1);
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__ico {
+        height: 1.5rem;
+        width: 1.5rem;
+        transition: all .3s ease;
+    }
+    
+    .stateDe,
+    .stateRu {
+        position: relative;
+
+        &::after {
+            content: "BETA";
+            display: inline-block;
+            width: 2.4rem;
+            padding: 3px;
+            // background-color: #888787;
+            color: #ddd;
+            position: absolute;
+            top: 50%;
+            right: 1.5rem;
+            font-size: .7rem;
+            border-radius: 2px;
+            transform: translateY(-50%);
+        }
+    }
+
+    .stateRu {
+
+        &::after {
+            content: "Soon";
+        }
+    }
+
+}
+
+[data-state="disabled"] {
+    cursor: initial;
+    color: rgba(#000, .3);
+
+    &::before {
+        content: "";
+        display: none;
+    }
+}
+
+.animated {
+    transform: rotate(180deg);
+}
+
+.isChecked {
+    &::before {
+        transform: scale(1);
+    }
+}
+
+// ***************************************
+
+/*
+
+&__lang {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border: .1rem solid rgba($color-grey-dark, .4);
+    border-radius: .5rem;
+    flex: 0 0 5rem;
+    user-select: none;
+    cursor: pointer;
+    color: initial;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    position: relative;
+    font-size: 1.4rem;
+    transition: all .3s ease;
+
+    &:hover {
+        box-shadow: .2rem .2rem .65rem rgba(#000, .035), -.2rem -.2rem .65rem rgba(#000, .035);
+    }
+}
+
+&__dropdown {
+    list-style: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    border: .1rem solid rgba($color-grey-dark, .4);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: .2rem .2rem .65rem rgba(#000, .015), -.2rem -.2rem .65rem rgba(#000, .015);
+    z-index: 9999;
+
+    display: none;
+    // visibility: hidden;
+}
+
+&__dropdown-item {
+    width: 11rem;
+    height: 3.3rem;
+    position: relative;
+    color: initial;
+}
+
+&__state--de,
+&__state--ru {
+    position: relative;
+
+    &::after {
+        content: "BETA";
+        display: inline-block;
+        width: 2.4rem;
+        padding: 3px;
+        background-color: #888787;
+        color: #ddd;
+        position: absolute;
+        top: 50%;
+        right: 1.5rem;
+        font-size: .7rem;
+        border-radius: 2px;
+        transform: translateY(-50%);
+    }
+}
+
+&__state--ru {
+
+    &::after {
+        content: "Soon";
+    }
+}
+
+&__statecheck,
+&__r-statecheck {
+    display: none;
+}
+
+&__state,
+&__state--t,
+&__r-state,
+&__r-state--t {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #f0f0f0;
+    z-index: 9999;
+    font-weight: 500;
+    padding: 0 1.5rem;
+
+    &::before {
+        content: "";
+        width: .3rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $color-primary-light;
+        transform: scale(0);
+        transition: transform .3s ease;
+        transform-origin: center;
+    }
+
+    &:hover::before {
+        transform: scale(1);
+    }
+}
+
+&__statecheck:checked + .navigation__state,
+&__statecheck:checked + .navigation__state--t,
+&__r-statecheck:checked + .navigation__r-state,
+&__r-statecheck:checked + .navigation__r-state--t {
+
+    &::before {
+        transform: scale(1);
+    }
+}
+
+&__lang-ico,
+&__lang-r-ico {
+    height: 1.5rem;
+    width: 1.5rem;
+    transition: all .3s ease;
+}
+
+&__lang-cur {
+    color: #555;
+}
+
+*/

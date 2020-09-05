@@ -1,0 +1,131 @@
+@import '../../../abstracts/index';
+
+.Tools {
+    display: flex;
+    height: 100%;
+
+    &__btns {
+        @include btn;
+        transition: all .3s;
+        display: flex;
+        position: relative;
+        z-index: 5;
+        transition: all .3s;
+        height: 100%;
+        font-size: 2rem;
+        align-items: center;
+
+        &--disabled {
+            opacity: .3;
+            cursor: initial;
+
+            &::after {
+                content: initial;
+                display: none;
+            }
+        }
+    
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    
+        &:hover,
+        &:focus {
+            opacity: 1;
+        }
+    
+        &::after {
+            content: "";
+            height: .3rem;
+            width: 4rem;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -2rem;
+            background-color: $color-primary-blue;
+            z-index: -1;
+            transform: scale(0);
+            transition: all .3s ease-in-out;
+            transform-origin: center;
+        }
+    }
+
+    &__ico-fonts {
+        font-size: 2.3rem;
+        display: flex;
+        transition: all .3s ease;
+        color: #494949;
+    }
+    
+    &__btns:hover::after,
+    &__btns:active::after,
+    &__btns:focus {
+        transform: scale(1);
+        font-size: 2rem;
+    }
+    
+    &__btns:hover .Tools__icons,
+    &__btns:active .Tools__icons,
+    &__btns:active .Tools__ico-fonts,
+    &__btns:hover .Tools__ico-fonts,
+    &__btns:focus .Tools__ico-fonts,
+    &__btns:focus .Tools__icons {
+        transform: scale(1.1);
+    }
+    
+    &__btns:hover .Tools__tooltips {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        visibility: visible;
+    }
+    
+    &__tooltips {
+        padding: 0 1rem;
+        height: 3rem;
+        font-size: 1.3rem;
+        border: .12rem solid rgba($color-grey-dark, .5);
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        transition: all .3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 15;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        box-shadow: .2rem .2rem .65rem rgba(#000, .01), -.2rem -.2rem .65rem rgba(#000, .01);
+    
+        @include respond(815) {
+            display: none;
+        }
+    }
+    
+    &__tooltips--right {
+        right: 0rem!important;
+        left: initial;
+        transform: translate(0) scale(0);
+        transform-origin: right;
+    }
+
+    &__btns:hover .Tools__tooltips--right {
+        transform: translate(0) scale(1);
+    }
+    
+    &__tooltips--hint {
+        width: max-content!important;
+        height: max-content!important;
+        padding: .5rem 1rem;
+    }
+    
+    &__hint {
+        color: #707070;
+        line-height: 1.7rem;
+    }
+}

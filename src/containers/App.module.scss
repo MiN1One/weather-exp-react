@@ -1,0 +1,65 @@
+@import '../abstracts/index';
+
+.App {
+    border: .1rem solid rgba($color-grey-dark, .5);
+    width: 95.2rem;
+    margin: 7.5rem auto;
+    box-shadow: 1rem 1rem 5rem rgba($color-grey-light, .4), -1rem -.5rem 5rem rgba($color-grey-light, .4);
+    border-radius: .6rem;
+    position: relative;
+    transition: height .5s ease;
+
+    @include respond(950) {
+        width: 100vw;
+        height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+    }
+
+    &__misc {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: .7;
+        z-index: 15;
+        padding: 4rem 0;
+    }
+
+    &__icon {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    &__loader {
+        width: 6.5rem;
+        height: 6.5rem;
+        opacity: .75;
+        transform: rotate(45deg);
+        transition: transform 3s;
+        animation: spin 1.5s infinite linear;
+
+        @include respond(815) {
+            width: 6.5rem;
+            height: 6.5rem;
+        }
+
+        @include respond(500) {
+            width: 5rem;
+            height: 5rem;
+        }
+    }
+}
+
+.row {
+    max-width: 91rem;
+    margin: 0 2rem 0 2rem;
+    height: max-content;
+
+    @include respond(950) {
+        width: 97%;
+        margin: 0 auto;
+    }
+}
