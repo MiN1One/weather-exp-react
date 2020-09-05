@@ -26,6 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "prefix-css" : "postcss --use autoprefixer -b \"last 5 versions\" build/static/css/main.40d29696.chunk.css -o build/static/css/main.40d29696.chunk.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
@@ -46,7 +47,9 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.6",
     "gh-pages": "^3.1.0",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "postcss-cli": "^7.1.2"
   }
 }
