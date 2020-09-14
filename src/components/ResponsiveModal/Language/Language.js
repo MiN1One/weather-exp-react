@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import en from '../../../main/main_en';
-import de from '../../../main/main_de';
+import langSet from '../../../main/main';
+import langList from '../../../main/langs';
 import * as actions from '../../../store/actions';
 import '../ResponsiveModal.scss';
 import Backdrop from '../../../UI/Backdrop/Backdrop';
 
 const LanguageMobile = (props) => {
-
-    const langSet = props.lang === 'de' ? de : en;
 
     const selectLangHandler = (lang, state) => {
         if (state !== 'disabled') {
@@ -22,7 +20,7 @@ const LanguageMobile = (props) => {
         }
     }
 
-    const langItem = langSet.lang.list.map(el => {
+    const langItem = langList.map(el => {
         return (
             <li className={`ResponsiveModal__item ${el.value === props.lang ? 'isChecked' : ''}`} 
                 onClick={selectLangHandler.bind(this, el.value, el.state)}
@@ -35,7 +33,7 @@ const LanguageMobile = (props) => {
         <React.Fragment>
             {props.inBack ? <Backdrop click={props.close} /> : null}
             <div className="ResponsiveModal">
-                <p className="ResponsiveModal__title">{langSet.lang.title}</p>
+                <p className="ResponsiveModal__title">{langSet[props.lang].lang.title}</p>
                 <ul className="ResponsiveModal__list">
                     {langItem}
                 </ul>

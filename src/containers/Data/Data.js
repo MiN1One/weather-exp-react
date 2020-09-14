@@ -10,39 +10,28 @@ import Spinner from '../../UI/Spinner/Spinner';
 import IntroMessage from '../../components/IntroMessage/IntroMessage';
 import countries from '../../main/parsedCountries';
 import ErrorReporter from '../../components/ErrorReporter/ErrorReporter';
-import de from '../../main/main_de';
-import en from '../../main/main_en';
+import langSet from '../../main/main';
 
 const Data = (props) => {
 
-    const langSet = props.lang === 'de' ? de : en;
-    
     const useTag = (svg) => {
         return `<use xlink:href=${sprite}#${svg}></use>`
     };
 
     const formatDate = (lang) => {
         let t = new Date();
-        let months;
         let month = t.getMonth();
         let date = t.getDate();
         let ending;
-    
-        if (lang === 'de') months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
-    
-        else if (lang === 'ru') months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-    
-        else months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    
         if (lang === 'en') {
             if (String(date).endsWith('1')) ending = 'st';
             else if (String(date).endsWith('2')) ending = 'nd'; 
             else if (String(date).endsWith('3')) ending = 'rd';
             else if (date === 11 || date === 12 || date === 13) ending = 'th';
             else ending = 'th'
-            return `${months[month]} ${date}${ending}`;
-        } else if (lang === 'ru') return `${date} ${months[month]}`
-        else return `${months[month]} ${date}`;
+            return `${langSet[props.lang].months[month]} ${date}${ending}`;
+        } else if (lang === 'ru') return `${date} ${langSet[props.lang].months[month]}`
+        else return `${langSet[props.lang].months[month]} ${date}`;
     };
     
     const showUnit = () => {
@@ -78,7 +67,7 @@ const Data = (props) => {
                 <div className="Data__location a-0">
                     <span>
                     <svg className="Data__pin" dangerouslySetInnerHTML={{__html: useTag.call(this, 'basic_pin2')}} />
-                    <span className="Data__search-for">{langSet.main_top.searchFor}</span>
+                    <span className="Data__search-for">{langSet[props.lang].main_top.searchFor}</span>
                     </span>
                     <span className="Data__l-main">
                         <svg className="Data__i-location" dangerouslySetInnerHTML={{__html: useTag.call(this, 'basic_geolocalize-05')}} />
@@ -94,7 +83,7 @@ const Data = (props) => {
                 <div className="Data__main a-0 a-4">
                     <svg className="Data__icon" dangerouslySetInnerHTML={{__html: useTag.call(this, props.data.weather.icon)}} />
                     <span className="Data__temp">{Math.round(props.data.temp)}{showUnit()}</span>
-                    <span className="Data__real">&sim;<span className="Data__real--text">{langSet.main_top.realFeel}</span> {props.data.app_temp}{showUnit()}</span>
+                    <span className="Data__real">&sim;<span className="Data__real--text">{langSet[props.lang].main_top.realFeel}</span> {props.data.app_temp}{showUnit()}</span>
                 </div>
                 <Details 
                     data={props.data} 

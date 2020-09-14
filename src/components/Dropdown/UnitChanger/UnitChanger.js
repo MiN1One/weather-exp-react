@@ -4,15 +4,11 @@ import $ from 'jquery';
 
 import sprite from '../../../icons/sprite.svg';
 import * as actions from '../../../store/actions';
-import en from '../../../main/main_en';
-import de from '../../../main/main_de';
+import langSet from '../../../main/main';
 
 class UnitChanger extends Component {
-    constructor(props) {
-        super(props); 
-        this.state = {
-            showDrop: false,
-        }
+    state = {
+        showDrop: false,
     }
 
     componentDidMount() {
@@ -35,9 +31,7 @@ class UnitChanger extends Component {
     }
 
     render() {
-        const langSet = this.props.lang === 'de' ? de : en;
-
-        const unitItems = langSet.units.list.map(el => {
+        const unitItems = langSet[this.props.lang].units.list.map(el => {
             return (
                 <li className={`Dropdown__item ${this.props.units === el.value ? 'isChecked' : ''}`} 
                     onClick={this.changeUnitHandler.bind(this, el.value)} 
@@ -58,7 +52,7 @@ class UnitChanger extends Component {
                     <svg className={classesIco.join(' ')} dangerouslySetInnerHTML={{__html: this.useTag('arrows_down')}} />
                 </div>
                 <ul className="Dropdown__list" ref={el => this.unitList = el}>
-                    <p className="Dropdown__title">{langSet.units.title}</p>
+                    <p className="Dropdown__title">{langSet[this.props.lang].units.title}</p>
                     {unitItems}
                 </ul>
             </div>

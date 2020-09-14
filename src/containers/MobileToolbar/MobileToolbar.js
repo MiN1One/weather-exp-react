@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import en from '../../main/main_en';
 import de from '../../main/main_de';
+import es from '../../main/main_es';
 import './MobileToolbar.scss';
 import '../../icons/basic.css';
 import '../../icons/arrows.css';
@@ -15,7 +16,9 @@ import Logo from '../../components/Logo/Logo';
 
 const MobileToolbar = (props) => {
 
-    const langSet = props.lang === 'de' ? de : en;
+    let langSet = en; 
+    if (props.lang === 'de') langSet = de;
+    else if (props.lang === 'es') langSet = es;
 
     const [dLangs, setDLangs] = useState(false);
     const [dUnits, setDUnits] = useState(false);

@@ -2,6 +2,7 @@ import React from 'react';
 
 import classes from './Spinner.module.scss';
 import sprite from '../../icons/sprite.svg';
+import langSet from '../../main/main';
 
 const Spinner = props => {
 
@@ -10,13 +11,8 @@ const Spinner = props => {
     };
 
     const showMessage = () => {
-        if (props.lang === 'de') {
-            if (!props.data) return 'Aktuelles Wetter abrufen ...';
-            else if (props.data) return 'Prognose abrufen ...';
-        } else {
-            if (!props.data) return 'Fetching current weather ...';
-            else if (props.data) return 'Retrieving forecast ...';
-        }
+        if (!props.data) return langSet[props.lang].loader.data;
+        else if (props.data) return langSet[props.lang].loader.forc;
     }
     
     return (

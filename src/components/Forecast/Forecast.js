@@ -11,6 +11,7 @@ import sprite from '../../icons/sprite.svg';
 import '../../vendors/swiper.min.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import ForecastPopup from '../ForecastPopup/ForecastPopup';
+import langSet from '../../main/main';
 
 // install Swiper components
 SwiperCore.use([Navigation]);
@@ -37,17 +38,12 @@ class Forecast extends Component {
         else return description;
     }
 
-    convertToWeekday = (date, lang = 'en') => {
+    convertToWeekday = (date) => {
         const dayOfWeek = new Date(date).getDay();
         const month = new Date(date).getMonth();
         const date1 = new Date(date).getDate();
-        if (lang === 'en') {
-            return isNaN(dayOfWeek) ? null : 
-            `${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek]} ${month + 1}/${date1}`;
-        } else if (lang === 'de') {
-            return isNaN(dayOfWeek) ? null : 
-            `${['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][dayOfWeek]} ${month + 1}/${date1}`;
-        }
+        return isNaN(dayOfWeek) ? null : 
+        `${langSet[this.props.lang].weekdays[dayOfWeek]} ${month + 1}/${date1}`;
     }
 
     showUnit = () => {
@@ -92,7 +88,7 @@ class Forecast extends Component {
             forecast = this.props.forecast.map((el, i) => {
                 return (
                     <SwiperSlide className="Forecast__item swiper-slide fade" key={i} onClick={this.onViewForecast.bind(this, i)} tabIndex={0}>
-                        <span className="Forecast__title-f"><span className="Forecast__title-f Forecast__title--day">{this.convertToWeekday(el.valid_date, this.props.lang)}</span></span>
+                        <span className="Forecast__title-f"><span className="Forecast__title-f Forecast__title--day">{this.convertToWeekday(el.valid_date)}</span></span>
                         <svg className="Forecast__icons-f" dangerouslySetInnerHTML={{__html: this.useTag(el.weather.icon)}} />
                         <span className="Forecast__title-f Forecast__condition-f">{this.limitDes(el.weather.description)}</span>
                         <span className="Forecast__in-f">{Math.round(el.high_temp)}{this.showUnit()} / {Math.round(el.low_temp)}{this.showUnit()}</span>

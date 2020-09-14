@@ -6,21 +6,10 @@ import $ from 'jquery';
 import sprite from '../../../icons/sprite.svg';
 import '../Dropdown.scss';
 import * as actions from '../../../store/actions';
-import en from '../../../main/main_en';
-import de from '../../../main/main_de';
+import langSet from '../../../main/main';
+import langList from '../../../main/langs';
 
 class LanguageDropdown extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            sliderDownShown: false
-        };
-    }
-
-    componentDidMount() {
-        this.setState({isChecked: this.props.lang})
-    }
 
     useTag = (svg) => {
         return `<use xlink:href=${sprite}#${svg}></use>`
@@ -42,14 +31,7 @@ class LanguageDropdown extends Component {
     }
 
     render() {
-        const langSet = this.props.lang === 'de' ? de : en;
-
-        let classesIco = ['Dropdown__ico'];
-        if (this.state.sliderDownShown) {
-            classesIco.push('animated')
-        };
-
-        const langs = langSet.lang.list.map(el => {
+        const langs = langList.map(el => {
             return <li 
                 className={`${el.value === this.props.lang ? 'isChecked' : ''} Dropdown__item`} 
                 key={el.value} 
@@ -62,10 +44,10 @@ class LanguageDropdown extends Component {
             <div className="Dropdown" onClick={this.slideDown} tabIndex={0}>
                 <div className="Dropdown__toggler">
                     <span>{this.props.lang.toUpperCase()}</span>
-                    <svg className={classesIco.join(' ')} dangerouslySetInnerHTML={{__html: this.useTag('arrows_down')}} />
+                    <svg className="Dropdown__ico" dangerouslySetInnerHTML={{__html: this.useTag('arrows_down')}} />
                 </div>
                 <ul className="Dropdown__list" ref={el => this.langList = el}>
-                    <li className="Dropdown__title">{langSet.lang.title}</li>
+                    <li className="Dropdown__title">{langSet[this.props.lang].lang.title}</li>
                     {langs} 
                 </ul>
             </div>

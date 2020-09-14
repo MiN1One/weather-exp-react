@@ -20,7 +20,7 @@ export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(r
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter basename="/weather-exp-react/">
+      <HashRouter>
         <App />
       </HashRouter>
     </Provider>

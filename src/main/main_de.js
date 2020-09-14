@@ -44,24 +44,7 @@ export default {
         ]
     },
     lang: {
-        title: 'Sprachensatz:',
-        list: [
-            {
-                title: 'English',
-                value: 'en',
-                state: null
-            },
-            {
-                title: 'Deutsch',
-                value: 'de', 
-                state: null
-            },
-            {
-                title: 'Russian',
-                value: 'ru', 
-                state: 'disabled'
-            }
-        ]
+        title: 'Sprachensatz:'
     },
     error: {
         inv_input_main: 'Suche konnte nicht durchgeführt werden',

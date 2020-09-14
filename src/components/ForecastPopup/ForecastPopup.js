@@ -5,29 +5,21 @@ import sprite from '../../icons/sprite.svg';
 import '../../icons/arrows.css';
 import '../../icons/basic.css';
 import '../../icons/weather.css';
-import en from '../../main/main_en';
-import de from '../../main/main_de';
+import langSet from '../../main/main';
 
 const ForecastPopup = (props) => {
-
-    const langSet = props.lang === 'de' ? de : en;
 
     const useTag = (svg) => {
         return `<use xlink:href=${sprite}#${svg}></use>`
     };
 
-    const convertToWeekday = (date, lang = 'en') => {
+    const convertToWeekday = (date) => {
         const dateObj = new Date(date);
         const dayOfWeek = dateObj.getDay();
         const month = dateObj.getMonth();
         const date1 = dateObj.getDate();
-        if (lang === 'en') {
-            return isNaN(dayOfWeek) ? null : 
-            `${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek]}, ${['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][month]} ${date1}`;
-        } else if (lang === 'de') {
-            return isNaN(dayOfWeek) ? null : 
-            `${['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][dayOfWeek]}, ${['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'][month]} ${date1}`;
-        }
+        return isNaN(dayOfWeek) ? null : 
+        `${langSet[props.lang].weekdays[dayOfWeek]}, ${langSet[props.lang].months[month]} ${date1}`;
     };
 
     const formatWindDirIcon = (windDir) => {
@@ -83,7 +75,7 @@ const ForecastPopup = (props) => {
             <div className="ForecastPopup">
                 <div className="ForecastPopup__container">
                     <div className="ForecastPopup__date">
-                        <span>{convertToWeekday(props.forecast.valid_date, props.lang)}</span>
+                        <span>{convertToWeekday(props.forecast.valid_date)}</span>
                         <button className="ForecastPopup__close" onClick={props.onClose}>
                             <span className="ForecastPopup__close-ico arrows-remove"></span>
                         </button>
@@ -93,7 +85,7 @@ const ForecastPopup = (props) => {
                             <svg className="ForecastPopup__ico" dangerouslySetInnerHTML={{__html: useTag(props.forecast.weather.icon)}} />
                             <div className="ForecastPopup__minmax">
                                 <span className="ForecastPopup__max">{props.forecast.high_temp}{showUnit()}</span>
-                                <span className="ForecastPopup__min">{langSet.details.low_temp}: {props.forecast.low_temp}{showUnit()}</span>
+                                <span className="ForecastPopup__min">{langSet[props.lang].details.low_temp}: {props.forecast.low_temp}{showUnit()}</span>
                             </div>
                         </div>
                         <div className="ForecastPopup__des">{props.forecast.weather.description}</div>
@@ -101,40 +93,40 @@ const ForecastPopup = (props) => {
                     <ul className="ForecastPopup__dets">
                         <li className="ForecastPopup__item">
                             <span className="ForecastPopup__item-icons w-weather-cloud-drop"></span>
-                            <span className="ForecastPopup__title">{langSet.details.pop}</span>
+                            <span className="ForecastPopup__title">{langSet[props.lang].details.pop}</span>
                             <span className="ForecastPopup__title">{props.forecast.pop}%</span>
                         </li>
                         <li className="ForecastPopup__item">
                             <span className="ForecastPopup__item-icons w-weather-cloud"></span>
-                            <span className="ForecastPopup__title">{langSet.details.clouds}</span>
+                            <span className="ForecastPopup__title">{langSet[props.lang].details.clouds}</span>
                             <span className="ForecastPopup__title">{props.forecast.clouds}%</span>
                         </li>
                         <li className="ForecastPopup__item">
                             <span className={`ForecastPopup__item-icons ${formatWindDirIcon(formatWind(props.forecast.wind_cdir_full))}`}></span>
                             {/* <span className={`ForecastPopup__item-icons ${formatWindDirIcon(formatWind(props.wData.wind_cdir_full))}`}></span> */}
-                            <span className="ForecastPopup__title">{langSet.details.wind_cdir_full}</span>
+                            <span className="ForecastPopup__title">{langSet[props.lang].details.wind_cdir_full}</span>
                             <span className="ForecastPopup__title">{formatWind(props.forecast.wind_cdir_full)}</span>
                         </li>
                         <li className="ForecastPopup__item">
                             <span className="ForecastPopup__item-icons w-weather-wind"></span>
-                            <span className="ForecastPopup__title">{langSet.details.wind_spd}</span>
+                            <span className="ForecastPopup__title">{langSet[props.lang].details.wind_spd}</span>
                             <span className="ForecastPopup__title">{props.forecast.wind_spd.toFixed(2)}&nbsp;{adjustUnit()}</span>
                         </li>
                         <li className="ForecastPopup__item">
                             <span className="ForecastPopup__item-icons arrows-move-bottom"></span>
-                            <span className="ForecastPopup__title">{langSet.details.pres}</span>
+                            <span className="ForecastPopup__title">{langSet[props.lang].details.pres}</span>
                             <span className="ForecastPopup__title">{props.forecast.pres.toFixed(2)} Pa</span>
                         </li>
                         <li className="ForecastPopup__item">
                             <span className="ForecastPopup__item-icons w-weather-sun"></span>
-                            <span className="ForecastPopup__title">{langSet.details.uv}</span>
+                            <span className="ForecastPopup__title">{langSet[props.lang].details.uv}</span>
                             <span className="ForecastPopup__title">{props.forecast.uv.toFixed(2)} nm</span>
                         </li>
                     </ul>
                 </div>
                 <div className="ForecastPopup__btns">
-                    <button className="ForecastPopup__btn" onClick={props.goToPrevious}>{langSet.prev}</button>
-                    <button className="ForecastPopup__btn" onClick={props.goToNext}>{langSet.next}</button>
+                    <button className="ForecastPopup__btn" onClick={props.goToPrevious}>{langSet[props.lang].prev}</button>
+                    <button className="ForecastPopup__btn" onClick={props.goToNext}>{langSet[props.lang].next}</button>
                 </div>
             </div>
         </React.Fragment>

@@ -6,7 +6,7 @@ import Data from './Data/Data';
 import Footer from '../components/Footer/Footer';
 
 function App() {
-
+  
   return (
     <div className={classes.App}>
       <div className={classes.row}>

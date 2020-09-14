@@ -47,24 +47,7 @@ export default {
         ]
     },
     lang: {
-        title: 'Language set:',
-        list: [
-            {
-                title: 'English',
-                value: 'en',
-                state: null
-            },
-            {
-                title: 'Deutsch',
-                value: 'de', 
-                state: null
-            },
-            {
-                title: 'Russian',
-                value: 'ru', 
-                state: 'disabled'
-            }
-        ]
+        title: 'Language set:'
     },
     error: {
         inv_input_main: 'Search could not be performed',

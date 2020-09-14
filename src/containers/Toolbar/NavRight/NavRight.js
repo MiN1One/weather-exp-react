@@ -8,13 +8,16 @@ import '../../../icons/basic.css';
 import * as actions from '../../../store/actions';
 import en from '../../../main/main_en';
 import de from '../../../main/main_de';
+import es from '../../../main/main_es';
 // import ReactToPrint from 'react-to-print';
 
 
 const NavRight = (props) => {
     
-    const langSet = props.lang === 'de' ? de : en;
-
+    let langSet = en; 
+    if (props.lang === 'de') langSet = de;
+    else if (props.lang === 'es') langSet = es;
+    
     const clearDataHandler = () => {
         if (window.location.pathname !== '/') props.onClear();
         props.history.replace('/');

@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import './Details.scss';
 import '../../icons/arrows.css';
 import '../../icons/weather.css';
-import de from '../../main/main_de'
-import en from '../../main/main_en';
+import langSet from '../../main/main';
 
 const StyledUl = styled.ul`
     list-style: none;
@@ -13,7 +12,7 @@ const StyledUl = styled.ul`
     position: relative;
     justify-content: center;
 
-    ${props => props.lang === 'de' 
+    ${props => props.lang === 'de' || props.lang === 'es' 
         ? ` grid-template-columns: repeat(4, 1fr);
             grid-template-rows:repeat(2, max-content);
             grid-gap:1rem;
@@ -56,9 +55,6 @@ const StyledUl = styled.ul`
     `;
 
 const Details = (props) => {
-
-    const langSet = props.lang === 'de' ? de : en;
-
     const formatWind = (string) => {
         if (string.includes('-')) {
             const all = string.split('-');
@@ -151,37 +147,37 @@ const Details = (props) => {
             <StyledUl {...props}>
                 <li className="Details__item a-0 a-0">
                     <span className="Details__icons w-weather-cloud-drop"></span>
-                    <span className="Details__title">{langSet.details.pop}</span>
+                    <span className="Details__title">{langSet[props.lang].details.pop}</span>
                     <span className="Details__in Details__in--wdirection">~{props.forecast[0].pop}%</span>
                 </li>
                 <li className="Details__item a-0 a-1">
                     <span className="Details__icons arrows-move-bottom"></span>
-                    <span className="Details__title">{langSet.details.pres}</span>
+                    <span className="Details__title">{langSet[props.lang].details.pres}</span>
                     <span className="Details__in Details__in--wdirection">{Math.round(props.data.pres)} Pa</span>
                 </li>
                 <li className="Details__item a-0 a-2">
                     <span className="Details__icons w-weather-cloud"></span>
-                    <span className="Details__title">{langSet.details.clouds}</span>
+                    <span className="Details__title">{langSet[props.lang].details.clouds}</span>
                     <span className="Details__in Details__in--wdirection">~{props.data.clouds}%</span>
                 </li>
                 <li className="Details__item a-0 a-3">
                     <span className="Details__icons w-weather-wind"></span>
-                    <span className="Details__title">{langSet.details.wind_spd}</span>
+                    <span className="Details__title">{langSet[props.lang].details.wind_spd}</span>
                     <span className="Details__in Details__in--wdirection">{Math.round(props.data.wind_spd)} {adjustUnit()}</span>
                 </li>
                 <li className="Details__item a-0 a-4">
                     <span className={`Details__icons ${formatWindDirIcon(formatWind(props.data.wind_cdir_full))} Details__compass`}></span>
-                    <span className="Details__title">{langSet.details.wind_cdir_full}</span>
+                    <span className="Details__title">{langSet[props.lang].details.wind_cdir_full}</span>
                     <span className="Details__in Details__in--wdirection">{formatWind(props.data.wind_cdir_full)}</span>
                 </li>
                 <li className="Details__item a-0 a-5">
                     <span className="Details__icons w-weather-drop"></span>
-                    <span className="Details__title">{langSet.details.rh}</span>
+                    <span className="Details__title">{langSet[props.lang].details.rh}</span>
                     <span className="Details__in Details__in--wdirection">{Math.round(props.data.rh)}%</span>
                 </li>
                 <li className="Details__item a-0 a-6">
                     <span className="Details__icons w-weather-sun"></span>
-                    <span className="Details__title">{langSet.details.uv}</span>
+                    <span className="Details__title">{langSet[props.lang].details.uv}</span>
                     <span className="Details__in Details__in--wdirection">{props.data.uv.toFixed(2)} nm</span>
                 </li>
                 <li className="Details__item a-0 a-7">
@@ -189,7 +185,7 @@ const Details = (props) => {
                         <span className="Details__icons w-weather-sunset"></span>
                         <span className="Details__icons w-weather-sundown"></span>
                     </div>
-                    <span className="Details__title Details__title--time">{langSet.details.sun_rise_set}</span>
+                    <span className="Details__title Details__title--time">{langSet[props.lang].details.sun_rise_set}</span>
                     <span className="Details__in Details__in--minmax">{`${formatSunriseTime(props.data.sunrise)}, ${formatSunsetTime(props.data.sunset)}`}</span>
                     {/* <div className="Details__sunriseset">
                         <span className="Details__text">Time is calculated in accordance with your local timezone</span>
@@ -197,7 +193,7 @@ const Details = (props) => {
                     </div> */}
                 </li>
             </StyledUl>
-            <div className="Details__time a-0 a-8">{langSet.details.obs_time}: {props.data.ob_time}</div>
+            <div className="Details__time a-0 a-8">{langSet[props.lang].details.obs_time}: {props.data.ob_time}</div>
         </div>
     )
 };

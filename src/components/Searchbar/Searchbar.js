@@ -8,14 +8,17 @@ import * as actions from '../../store/actions';
 import '../../icons/basic.css';
 import en from '../../main/main_en';
 import de from '../../main/main_de';
+import es from '../../main/main_es';
 
 const Searchbar = (props) => {
 
     useEffect(() => {
         props.readStorage();
     });
-
-    const langSet = props.lang === 'de' ? de : en;
+    
+    let langSet = en; 
+    if (props.lang === 'de') langSet = de;
+    else if (props.lang === 'es') langSet = es;
 
     let searchInput = useRef();
     let recentList = useRef();
