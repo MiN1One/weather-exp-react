@@ -12,6 +12,8 @@ In the project directory, you can run:
 ### `NOTE!` Russian language and sunrise/set times are in the ALPHA stage.',
 Powered by WeatherBit. 
 Developed only for learn-in-practice purposes
+
+## `NEW` - Added Spanish language
  
             
         
