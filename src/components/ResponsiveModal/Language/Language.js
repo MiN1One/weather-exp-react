@@ -16,9 +16,9 @@ const LanguageMobile = (props) => {
             }
             if (props.lang !== lang && props.search && !props.loading) props.onLangRefresh(lang, props.units, props.search);
             localStorage.setItem('weatherAppLang', lang);
-            props.close();
+            // props.close();
         }
-    }
+    };
 
     const langItem = langList.map(el => {
         return (

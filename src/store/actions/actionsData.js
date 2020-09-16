@@ -87,8 +87,7 @@ const searchStart = () => {
 let history = localStorage.getItem('recentSearches') !== null ? JSON.parse(localStorage.getItem('recentSearches')) : [];
 
 const checkForExistence = (search) => {
-    const exists = history.findIndex(el => el.search === search) === -1;
-    return exists;
+    return history.findIndex(el => el.search === search) === -1;
 };
 
 const storeRecentSearch = (search, data) => {
@@ -112,7 +111,7 @@ const storeRecentSearch = (search, data) => {
 export const readStore = () => {
     return {
         type: actionTypes.READ_STORE,
-        historyList: history.reverse(),
+        historyList: history.reverse()
     }
 };
 

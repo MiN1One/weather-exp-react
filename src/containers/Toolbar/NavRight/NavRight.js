@@ -6,17 +6,11 @@ import './NavRight.scss';
 import '../../../icons/arrows.css';
 import '../../../icons/basic.css';
 import * as actions from '../../../store/actions';
-import en from '../../../main/main_en';
-import de from '../../../main/main_de';
-import es from '../../../main/main_es';
+import langSet from '../../../main/main';
 // import ReactToPrint from 'react-to-print';
 
 
 const NavRight = (props) => {
-    
-    let langSet = en; 
-    if (props.lang === 'de') langSet = de;
-    else if (props.lang === 'es') langSet = es;
     
     const clearDataHandler = () => {
         if (window.location.pathname !== '/') props.onClear();
@@ -43,21 +37,21 @@ const NavRight = (props) => {
             <button className="Tools__print Tools__btns Tools__btns--disabled">
                 <span className="icon-basic-laptop Tools__ico-fonts"></span>
                 <div className="Tools__tooltips Tools__tooltips--hint">
-                <span className="Tools__title">{langSet.toolbar.print}</span>
-                <p className="Tools__hint" dangerouslySetInnerHTML={{__html: langSet.toolbar.printP}}></p>
+                <span className="Tools__title">{langSet[props.lang].toolbar.print}</span>
+                <p className="Tools__hint" dangerouslySetInnerHTML={{__html: langSet[props.lang].toolbar.printP}}></p>
                 </div>
             </button>
             <button className="Tools__clear Tools__btns" onClick={clearDataHandler}>
                 <span className="arrows-circle-remove Tools__ico-fonts"></span>
                 <div className="Tools__tooltips">
-                    <span className="Tools__title">{langSet.toolbar.clear}</span>
+                    <span className="Tools__title">{langSet[props.lang].toolbar.clear}</span>
                 </div>
             </button>
             <button className="Tools__update Tools__btns" onClick={updateHandler}>
                 <span className="arrows-rotate Tools__ico-fonts"></span>
                 <div className="Tools__tooltips Tools__tooltips--right Tools__tooltips--hint">
-                    <span className="Tools__title">{langSet.toolbar.update}</span>
-                    <p className="Tools__hint Tools__hint--update" dangerouslySetInnerHTML={{__html: langSet.toolbar.updateP}}></p>
+                    <span className="Tools__title">{langSet[props.lang].toolbar.update}</span>
+                    <p className="Tools__hint Tools__hint--update" dangerouslySetInnerHTML={{__html: langSet[props.lang].toolbar.updateP}}></p>
                 </div>
             </button>
         </div>

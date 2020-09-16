@@ -12,12 +12,12 @@ const Toolbar = () => {
 
     useEffect(() => {
         switchToolbar(media);
-    }, [])
+    }, []);
 
     const [mediaOn, setMediaOn] = useState(false);
 
     const switchToolbar = (media) => {
-        if (media.matches) setMediaOn(true)
+        if (media.matches) setMediaOn(true);
         else setMediaOn(false);
     };
     

@@ -1,4 +1,7 @@
 export default [
+
+    // Add your language to the list
+    
     {
         title: 'English',
         value: 'en',

@@ -6,19 +6,13 @@ import $ from 'jquery';
 import './Searchbar.scss';
 import * as actions from '../../store/actions';
 import '../../icons/basic.css';
-import en from '../../main/main_en';
-import de from '../../main/main_de';
-import es from '../../main/main_es';
+import langSet from '../../main/main';
 
 const Searchbar = (props) => {
 
     useEffect(() => {
         props.readStorage();
     });
-    
-    let langSet = en; 
-    if (props.lang === 'de') langSet = de;
-    else if (props.lang === 'es') langSet = es;
 
     let searchInput = useRef();
     let recentList = useRef();
@@ -101,16 +95,16 @@ const Searchbar = (props) => {
                 ref={searchInput} 
                 type="text" 
                 className="Searchbar__field" 
-                placeholder={langSet.toolbar.searchField} 
+                placeholder={langSet[props.lang].toolbar.searchField} 
                 onFocus={() => $(recentList.current).slideDown({ duration: 250 })}
                 onBlur={onBlur} 
                 onChange={(event) => props.onInputChange(event.target.value)} />
-            <button className="Searchbar__btn" title={langSet.toolbar.searchBtn}>
+            <button className="Searchbar__btn" title={langSet[props.lang].toolbar.searchBtn}>
                 <span className="icon-basic-magnifier Searchbar__ico-fonts"></span>
             </button>
             <ul className="Searchbar__recent-list" ref={recentList}>
                 {historyItems}
-                <li className="Searchbar__recent-items">{langSet.toolbar.recentSearches}</li>
+                <li className="Searchbar__recent-items">{langSet[props.lang].toolbar.recentSearches}</li>
             </ul>
         </form>
     )

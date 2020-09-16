@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import en from '../../main/main_en';
-import de from '../../main/main_de';
-import es from '../../main/main_es';
+import langSet from '../../main/main';
 import './MobileToolbar.scss';
 import '../../icons/basic.css';
 import '../../icons/arrows.css';
@@ -15,11 +13,6 @@ import * as actions from '../../store/actions';
 import Logo from '../../components/Logo/Logo';
 
 const MobileToolbar = (props) => {
-
-    let langSet = en; 
-    if (props.lang === 'de') langSet = de;
-    else if (props.lang === 'es') langSet = es;
-
     const [dLangs, setDLangs] = useState(false);
     const [dUnits, setDUnits] = useState(false);
     const [dBar, setDBar] = useState(false);
@@ -71,26 +64,26 @@ const MobileToolbar = (props) => {
             <div className={classes.join(' ')}>
                 <Logo />
                 <div className="MobileToolbar__box">
-                    <p className="MobileToolbar__title mt-small">{langSet.lang.title}</p>
+                    <p className="MobileToolbar__title mt-small">{langSet[props.lang].lang.title}</p>
                     <button className="MobileToolbar__btns" onClick={langToggler}>{showFullLang()}</button>
                 </div>
                 <div className="MobileToolbar__box">
-                    <p className="MobileToolbar__title">{langSet.units.title}</p>
+                    <p className="MobileToolbar__title">{langSet[props.lang].units.title}</p>
                     <button className="MobileToolbar__btns" onClick={unitToggler}>{showFullUnit()}</button>
                 </div>
                 <div className="MobileToolbar__box">
-                    <p className="MobileToolbar__title mb-small">{langSet.toolbar.title}</p>
+                    <p className="MobileToolbar__title mb-small">{langSet[props.lang].toolbar.title}</p>
                     <button className="MobileToolbar__tools MobileToolbar__btns">
                         <span className="icon-basic-laptop MobileToolbar__icon"></span>
-                        <p className="MobileToolbar__tools-title">{langSet.toolbar.print}</p>
+                        <p className="MobileToolbar__tools-title">{langSet[props.lang].toolbar.print}</p>
                     </button>
                     <button className="MobileToolbar__tools MobileToolbar__btns" onClick={clearDataHandler}>
                         <span className="arrows-circle-remove MobileToolbar__icon"></span>
-                        <p className="MobileToolbar__tools-title">{langSet.toolbar.clear}</p>
+                        <p className="MobileToolbar__tools-title">{langSet[props.lang].toolbar.clear}</p>
                     </button>
                     <button className="MobileToolbar__tools MobileToolbar__btns" onClick={updateHandler}>
                         <span className="arrows-rotate MobileToolbar__icon"></span>
-                        <p className="MobileToolbar__tools-title ">{langSet.toolbar.update}</p>
+                        <p className="MobileToolbar__tools-title ">{langSet[props.lang].toolbar.update}</p>
                     </button>
                 </div>
             </div>
