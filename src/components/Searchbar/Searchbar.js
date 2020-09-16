@@ -70,10 +70,17 @@ const Searchbar = (props) => {
 
     };
 
-    const onBlur = () => {
-        setTimeout(() => {
+    let timer;
+    const blur = () => {
+        timer = setTimeout(() => {
             $(recentList.current).slideUp({ duration: 250 })
-        }, 55)
+        }, 55);
+    };
+
+    const focus = () => {
+        $(recentList.current).slideDown({ duration: 250 });
+        // Clear timer to prevent memory leaks
+        if (timer) clearTimeout(timer);
     };
 
     let historyItems = null;
@@ -96,8 +103,8 @@ const Searchbar = (props) => {
                 type="text" 
                 className="Searchbar__field" 
                 placeholder={langSet[props.lang].toolbar.searchField} 
-                onFocus={() => $(recentList.current).slideDown({ duration: 250 })}
-                onBlur={onBlur} 
+                onFocus={focus}
+                onBlur={blur} 
                 onChange={(event) => props.onInputChange(event.target.value)} />
             <button className="Searchbar__btn" title={langSet[props.lang].toolbar.searchBtn}>
                 <span className="icon-basic-magnifier Searchbar__ico-fonts"></span>
