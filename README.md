@@ -1,3 +1,5 @@
+The website can be visited on [Github Pages](http://github.io/MiN1One/weather-react-exp)
+
 ## WeatherApp v2
 
 In the project directory, you can run:
