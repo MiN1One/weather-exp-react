@@ -1,4 +1,4 @@
-#### The website can be visited on [Github Pages](http://min1one.github.io/weather-react-exp)
+#### The website can be visited on [Github Pages](http://min1one.github.io/weather-exp-react)
 
 ## WeatherApp v2
 
