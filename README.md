@@ -2,8 +2,6 @@
 
 ## WeatherApp v2
 
-In the project directory, you can run:
-
 ### `Features:`
 
 * Language support - English, Deutch, Russian
