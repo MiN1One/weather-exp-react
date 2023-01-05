@@ -72,7 +72,7 @@ export default {
             note: 'NOTE! Russian language and sunrise/set time are in the ALPHA stage.',
             plsSearch: 'Search for your region to retrieve weather data.',
             srcCode: 'Source code on github',
-            main: 'Powered by <a href="https://www.weatherbit.io/">WeatherBit.</a> Developed only for learn-in-practice purposes by <a href="https://t.me/nodirbek_u">MiN1One.</a>',
+            main: 'Powered by <a href="https://www.weatherbit.io/">WeatherBit.</a> Developed only for learn-in-practice purposes by <a href="https://t.me/MiN1One">MiN1One.</a>',
             features: [
                 'Language support - English, Deutch, Russian',
                 'Weather units - Metric, Imperial, Scientific',
@@ -159,7 +159,7 @@ export default {
             note: 'Die russische Sprache und die Sonnenaufgang/untergang befinden sich in der ALPHA-Phase',
             plsSearch: 'Suche nach deiner Region, um Wetterdaten abzurufen.',
             srcCode: 'Quellcode auf Github',
-            main: 'Unterstützt von <a href="https://www.weatherbit.io/"> WeatherBit. </a> Entwickelt nur zum Lernen in der Praxis von <a href = "https://t.me / nodirbek_u "> MiN1One. </a> ',
+            main: 'Unterstützt von <a href="https://www.weatherbit.io/"> WeatherBit. </a> Entwickelt nur zum Lernen in der Praxis von <a href = "https://t.me/MiN1One "> MiN1One. </a> ',
             features: [
                 'Sprachunterstützung - Englisch, Niederländisch, Russisch',
                 'Wettereinheiten - metrisch, imperial, wissenschaftlich',
@@ -249,7 +249,7 @@ export default {
             note: '¡NOTA! El idioma ruso y la hora del amanecer / puesta están en la etapa ALPHA. ',
             plsSearch: 'Busque su región para recuperar datos meteorológicos.',
             srcCode: 'Código fuente en github',
-            main: 'Desarrollado por <a href="https://www.weatherbit.io/"> WeatherBit. </a> Desarrollado solo con fines de aprendizaje en la práctica por <a href = "https://t.me / nodirbek_u "> MiN1One. </a> ',
+            main: 'Desarrollado por <a href="https://www.weatherbit.io/"> WeatherBit. </a> Desarrollado solo con fines de aprendizaje en la práctica por <a href = "https://t.me/MiN1One "> MiN1One. </a> ',
             features: [
                 'Soporte de idiomas: inglés, alemán, ruso',
                 'Unidades meteorológicas: métricas, imperiales, científicas',
